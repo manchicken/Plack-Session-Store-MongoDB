@@ -4,34 +4,36 @@ Plack::Session::Store::MongoDB - MongoDB based session store for Plack apps.
 
 # SYNOPSIS
 
-        use Plack::Builder;
-        use Plack::Middleware::Session;
-        use Plack::Session::Store::MongoDB;
+```perl
+use Plack::Builder;
+use Plack::Middleware::Session;
+use Plack::Session::Store::MongoDB;
 
-        my $app = sub {
-                return [ 200, [ 'Content-Type' => 'text/plain' ], [ 'Hello Foo' ] ];
-        };
+my $app = sub {
+        return [ 200, [ 'Content-Type' => 'text/plain' ], [ 'Hello Foo' ] ];
+};
 
-        builder {
-                enable 'Session',
-                        store => Plack::Session::Store::MongoDB->new(
-                                session_db_name => 'myapp',
-                                coll_name => 'myapp_sessions',  # defaults to 'session'
-                                host => 'mongodb.myhost.com',   # defaults to 'localhost'
-                                port => 27017                   # this is the default
-                        );
-                $app;
-        };
+builder {
+        enable 'Session',
+                store => Plack::Session::Store::MongoDB->new(
+                        session_db_name => 'myapp',
+                        coll_name => 'myapp_sessions',  # defaults to 'session'
+                        host => 'mongodb.myhost.com',   # defaults to 'localhost'
+                        port => 27017                   # this is the default
+                );
+        $app;
+};
 
-        # alternatively, you can just pass a MongoDB::Connection object:
-        builder {
-                enable 'Session',
-                        store => Plack::Session::Store::MongoDB->new(
-                                session_db_name => 'myapp',
-                                conn => MongoDB::Connection->new
-                        );
-                $app;
-        };
+# alternatively, you can just pass a MongoDB::Connection object:
+builder {
+        enable 'Session',
+                store => Plack::Session::Store::MongoDB->new(
+                        session_db_name => 'myapp',
+                        conn => MongoDB::Connection->new
+                );
+        $app;
+};
+```
 
 # DESCRIPTION
 
