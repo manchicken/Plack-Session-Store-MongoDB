@@ -1,6 +1,6 @@
 # NAME
 
-Plack::Session::Store::MongoDB - MongoDB based session store for Plack apps.
+`Plack::Session::Store::MongoDB` - MongoDB based session store for Plack apps.
 
 # SYNOPSIS
 
